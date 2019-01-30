@@ -1,0 +1,13 @@
+CS 2200 Spring 2019
+Homework 2
+
+Name: Zach Panzarino
+GT Username: zpanzarino3
+
+Question 1
+----------
+
+One possible sequence of instructions that would achieve the desired result is
+st $ra, pc
+j $at
+where pc is the current PC
