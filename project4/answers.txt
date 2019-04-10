@@ -1,0 +1,91 @@
+CS 2200 Spring 2018
+Project 4
+
+Name: Zachary Panzarino
+GT Username: zpanzarino3
+
+Problem 1B
+----------
+
+1 CPU
+# of Context Switches: 99
+Total execution time: 67.6 s
+Total time spent in READY state: 389.9 s
+
+2 CPU
+# of Context Switches: 116
+Total execution time: 35.8 s
+Total time spent in READY state: 83.1 s
+
+4 CPU
+# of Context Switches: 310
+Total execution time: 33.4 s
+Total time spent in READY state: 0.3 s
+
+There is not a linear relationship between the number of CPUs and the total
+execution time of each. There is a significant improvement between 1 and 2,
+but there is not a large improvement between 2 and 4. This occurs because more
+processes can be executed simultaneously, but sometimes the extra CPUs are
+idle. Therefore, when there are 4 CPUs there are some that are sitting idle
+for longer.
+
+Problem 2B
+----------
+
+800ms
+# of Context Switches: 136
+Total execution time: 67.6 s
+Total time spent in READY state: 325.4 s
+
+600ms
+# of Context Switches: 161
+Total execution time: 67.6 s
+Total time spent in READY state: 314.5 s
+
+400ms
+# of Context Switches: 203
+Total execution time: 67.6 s
+Total time spent in READY state: 298.8 s
+
+200ms
+# of Context Switches: 362
+Total execution time: 67.5 s
+Total time spent in READY state: 285.2 s
+
+The total waiting time decreases as the timeslice gets smaller. However, in a
+real OS this would not be optimal since it causes more context switches, which
+increases the execution time. In this example, the total execution time was
+not improved at all.
+
+Problem 3B
+----------
+
+The SRTF algorithm is almost impossible to implement in a real operating system
+since it is difficult to know the true amount of time remaining for a process
+due to branch conditions and loops since they are somewhat unpredictable.
+In addition, this can lead to starvation for processes with a long processing
+time if shorter processes are continuously added. Implementing priority is
+simpler because it does not have to update the time remaining consistently.
+
+FIFO
+# of Context Switches: 99
+Total execution time: 67.6 s
+Total time spent in READY state: 389.9 s
+
+Round Robin (200ms)
+# of Context Switches: 362
+Total execution time: 67.5 s
+Total time spent in READY state: 285.2 s
+
+Priority
+# of Context Switches: 101
+Total execution time: 67.9 s
+Total time spent in READY state: 174.1 s
+
+Priority has the lowest waiting time. This happens because the preemptive
+implementation is closest to that of SRTF of any of the other algorithms.
+Round Robin splits the time evenly so it is not as efficient as Priority,
+leading to a higher wait time. FIFO gives no priority to process length so it
+is less efficient than Priority. Priority is most efficient since it uses a
+strategic ordering of processes that is meant to reduce the number of context
+switches and time spent waiting.
